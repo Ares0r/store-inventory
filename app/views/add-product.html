@@ -1,26 +1,35 @@
 <div class="jumbotron">
-	<h4>Proszę dodać informacje o produktach.</h4>
+	<h4>Proszę dodać informacje o produkcie</h4>
 </div>
 <div ng-controller="AddProdCtrl">
-<form action="add-product_submit" method="get" accept-charset="utf-8">
+<div>
+<!-- <form action="add-product_submit" method="get" accept-charset="utf-8"> -->
+<form ng-submit="addProduct()">
 
-<label class="label-width" for="addProduct">Nazwa produktu</label>
-<input type="text" name="addProduct" value="" placeholder=""> <br>
+<label class="label-width" for="productName">Nazwa produktu</label>
+<input type="text" name="productName" value="" data-ng-model="product.productName" placeholder=""> <br>
 
-<label class="label-width" for="cenaNetto">Cena Netto</label>
-<input type="number" name="cenaNetto" value="" placeholder=""> <br>
+<label class="label-width" for="netPrice">Cena Netto</label>
+<input type="number" name="netPrice" value="" data-ng-model="product.netPrice" placeholder=""> <br>
 
-<label class="label-width" for="numerFaktury">Numer faktury</label>
-<input type="text" name="numerFaktury" value="" placeholder=""> <br>
+<label class="label-width" for="invoiceNumber">Numer faktury</label>
+<input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br>
 
-<label class="label-width" for="dzienFaktury">Data z faktury</label>
-<input type="date" name="dzienFaktury" value="" placeholder=""> <br>
+<label class="label-width" for="invoiceDay">Data z faktury</label>
+<input type="text" name="invoiceDay" value="" data-ng-model="product.invoiceDay" placeholder="dd-mm-rrrr"> <br>
 
-<label class="label-width" for="jednostkaMiary">Jednostka miary</label>
-<input type="text" name="jednostkaMiary" value="" placeholder="">
+<label class="label-width" for="measureUnit">Jednostka miary</label>
+<input type="text" name="measureUnit" value="" data-ng-model="product.measureUnit" placeholder="">
+
+<button ng-submit="addProduct()">Dodaj</button>
 
 </form>
 
+Product Data: {{product.productName}} <br>
+Product Price: {{product.netPrice}} zł <br>
+Product invoice number: {{product.invoiceNumber}} <br>
+Product invoice day: {{product.invoiceDay}} <br>
+Product Data: {{product.measureUnit}} <br>
 
 	
 </div>
