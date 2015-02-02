@@ -21,6 +21,26 @@ angular.module('storeApp')
   	//$scope.product = '';
   	$scope.addProduct = function() {
   		console.log($scope.product);
+  		console.log($scope.product.productName);
+
+
+
+  		var products = { "products": [
+  			{ "productName": $scope.product.productName,
+  			  "netPrice" : $scope.product.netPrice,
+  			  "invoiceNumber" : $scope.product.invoiceNumber,
+  			  "invoiceDay" : $scope.product.invoiceDay,
+  			  "measureUnit" : $scope.product.measureUnit,
+  			}
+  		]};	
+
+  		
+
+
+  		console.log(products);
+
+
+
   	};
   	
 

@@ -10,7 +10,7 @@
 <input type="text" name="productName" value="" data-ng-model="product.productName" placeholder=""> <br>
 
 <label class="label-width" for="netPrice">Cena Netto</label>
-<input type="number" name="netPrice" value="" data-ng-model="product.netPrice" placeholder=""> <br>
+<input type="number" min="0.01" step="0.01" name="netPrice" value="" data-ng-model="product.netPrice" placeholder=""> <br>
 
 <label class="label-width" for="invoiceNumber">Numer faktury</label>
 <input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br>
