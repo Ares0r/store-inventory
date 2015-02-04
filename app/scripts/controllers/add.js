@@ -22,14 +22,14 @@ angular.module('storeApp')
   	$scope.addProduct = function() {
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
-  		var products = { "products": [
-  			{ "productName": $scope.product.productName,
-  			  "netPrice" : $scope.product.netPrice,
-  			  "invoiceNumber" : $scope.product.invoiceNumber,
-  			  "invoiceDay" : $scope.product.invoiceDay,
-  			  "measureUnit" : $scope.product.measureUnit,
-  			}
-  		]};	
+  		// var products = { "products": [
+  		// 	{ "productName": $scope.product.productName,
+  		// 	  "netPrice" : $scope.product.netPrice,
+  		// 	  "invoiceNumber" : $scope.product.invoiceNumber,
+  		// 	  "invoiceDay" : $scope.product.invoiceDay,
+  		// 	  "measureUnit" : $scope.product.measureUnit,
+  		// 	}
+  		// ]};	
 
   	Parse.initialize("eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d", "LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI");
     
