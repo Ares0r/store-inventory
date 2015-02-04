@@ -20,11 +20,8 @@ angular.module('storeApp')
 
   	//$scope.product = '';
   	$scope.addProduct = function() {
-  		console.log($scope.product);
-  		console.log($scope.product.productName);
-
-
-
+  		// console.log($scope.product);
+  		// console.log($scope.product.productName);
   		var products = { "products": [
   			{ "productName": $scope.product.productName,
   			  "netPrice" : $scope.product.netPrice,
@@ -34,10 +31,24 @@ angular.module('storeApp')
   			}
   		]};	
 
-  		
+  	Parse.initialize("eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d", "LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI");
+    
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+      testObject.save({"productName": $scope.product.productName,
+  			  "netPrice" : $scope.product.netPrice,
+  			  "invoiceNumber" : $scope.product.invoiceNumber,
+  			  "invoiceDay" : $scope.product.invoiceDay,
+  			  "measureUnit" : $scope.product.measureUnit
+  			}, {
+      success: function(object) {
+        $(".success").show();
+      },
+      error: function(model, error) {
+        $(".error").show();
+      }
+    });
 
-
-  		console.log(products);
 
 
 
