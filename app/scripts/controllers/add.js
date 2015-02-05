@@ -10,50 +10,38 @@
 
 angular.module('storeApp')
   .controller('AddProdCtrl', function ($scope) {
-  	// var d = date(getFullYear(), getMonth(), getDate());
-  	// $scope.myForm = {};
-  	// $scope.myForm.productName = "jajko";
-  	// $scope.myForm.netPrice =  12.12;
-  	// $scope.myForm.invoiceNumber = "12/32/OCO/2015";
-  	// // $scope.myForm.invoiceDay = d;
-  	// $scope.myForm.measureUnit = "szt.";
-
-  	//$scope.product = '';
+  	 	//$scope.product = '';
   	$scope.addProduct = function() {
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
-  		// var products = { "products": [
-  		// 	{ "productName": $scope.product.productName,
-  		// 	  "netPrice" : $scope.product.netPrice,
-  		// 	  "invoiceNumber" : $scope.product.invoiceNumber,
-  		// 	  "invoiceDay" : $scope.product.invoiceDay,
-  		// 	  "measureUnit" : $scope.product.measureUnit,
-  		// 	}
-  		// ]};	
+  		var products = { 
+  			"productName": $scope.product.productName,
+  			"netPrice" : $scope.product.netPrice,
+  			"invoiceNumber" : $scope.product.invoiceNumber,
+  			"invoiceDay" : $scope.product.invoiceDay,
+  			"measureUnit" : $scope.product.measureUnit,
+        "productVAT": $scope.product.productVAT
+  			};	
+
+       // console.log(products);
 
   	Parse.initialize("eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d", "LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI");
     
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-      testObject.save({"productName": $scope.product.productName,
-  			  "netPrice" : $scope.product.netPrice,
-  			  "invoiceNumber" : $scope.product.invoiceNumber,
-  			  "invoiceDay" : $scope.product.invoiceDay,
-  			  "measureUnit" : $scope.product.measureUnit
-  			}, {
+    var StoreInventory = Parse.Object.extend("StoreInventory");
+    var storeInventory = new StoreInventory();
+      storeInventory.save(products, {
       success: function(object) {
         $(".success").show();
+        $("input").val('');
+        // console.log("it works!");
       },
       error: function(model, error) {
         $(".error").show();
+        // console.log("it's broken");
       }
     });
 
-
-
-
   	};
-  	
 
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

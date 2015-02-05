@@ -3,34 +3,68 @@
 	<h4>Proszę dodać informacje o produkcie</h4>
 </div>
 <div ng-controller="AddProdCtrl">
-<div>
+<div class="row">
 <!-- <form action="add-product_submit" method="get" accept-charset="utf-8"> -->
 <form ng-submit="addProduct()">
 
-<label class="label-width" for="productName">Nazwa produktu</label>
-<input type="text" name="productName" value="" data-ng-model="product.productName" placeholder=""> <br>
+<div class="col-lg-6">
+	<label class="label-width" for="productName">Nazwa produktu</label>
+	<input type="text" name="productName" value="" data-ng-model="product.productName" placeholder=""> <br>
 
-<label class="label-width" for="netPrice">Cena Netto</label>
-<input type="number" min="0.01" step="0.01" name="netPrice" value="" data-ng-model="product.netPrice" placeholder=""> <br>
+	<label class="label-width" for="netPrice">Cena Netto</label>
+	<input type="number" min="0.01" step="0.01" name="netPrice" data-ng-model="product.netPrice" placeholder=""> <br>
 
-<label class="label-width" for="invoiceNumber">Numer faktury</label>
-<input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br>
+	<label class="label-width" for="invoiceNumber">Numer faktury</label>
+	<input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br>
 
-<label class="label-width" for="invoiceDay">Data z faktury</label>
-<input type="text" name="invoiceDay" value="" data-ng-model="product.invoiceDay" placeholder="dd-mm-rrrr"> <br>
+	<label class="label-width" for="invoiceDay">Data z faktury</label>
+	<input type="text" name="invoiceDay" value="" data-ng-model="product.invoiceDay" placeholder="dd-mm-rrrr"> <br>
 
-<label class="label-width" for="measureUnit">Jednostka miary</label>
-<input type="text" name="measureUnit" value="" data-ng-model="product.measureUnit" placeholder="">
+	<label class="label-width" for="measureUnit">Jednostka miary</label>
+	<input type="text" name="measureUnit" value="" data-ng-model="product.measureUnit" placeholder="">
+</div>
 
-<button ng-submit="addProduct()">Dodaj</button>
+<div class="col-lg-6">
+
+	<label class="label-width" for="productWeight">Gramatura produktu</label>
+	<input type="text" name="productWeight" value="" data-ng-model="product.productWeight" placeholder="">
+
+	<label class="label-width" for="productVAT">VAT produktu</label>
+	<input type="text" name="productVAT" value="" data-ng-model="product.productVAT" placeholder="">
+
+</div>
+
+<div class="clearfix"></div>
+
+<br>
+<button class="btn btn-primary col-lg-12" ng-submit="addProduct()">Dodaj</button>
 
 </form>
+<div class="success">
+Produkt został dodany poprawnie, dzięki.
+</div>
 
-Product Data: {{product.productName}} <br>
-Product Price: {{product.netPrice}} zł <br>
-Product invoice number: {{product.invoiceNumber}} <br>
-Product invoice day: {{product.invoiceDay}} <br>
-Product Data: {{product.measureUnit}} <br>
+<div class="error">
+Produkt został dodany poprawnie, dzięki.
+</div>
+<br><br>
 
-	
+<hr>
+<h4>Wprowadzone dane:</h4>
+<div class="row">
+	<div class="col-lg-6">
+		Nazwa produktu: {{product.productName}} <br>
+		Cena produktu: {{product.netPrice}} zł <br>
+		Numer faktury: {{product.invoiceNumber}} <br>
+		Data wystawienia faktury: {{product.invoiceDay}} <br>
+		Jednostka miary: {{product.measureUnit}} <br>
+	</div>
+	<div class="col-lg-6">
+		Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
+		Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) | number:2 }} zł <br>
+		Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
+	</div>
+
+</div>
+
 </div>

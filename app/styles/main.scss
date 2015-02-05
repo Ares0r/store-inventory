@@ -94,3 +94,21 @@ body {
     border-bottom: 0;
   }
 }
+
+//  
+.success {
+  display: none;
+  color: green;
+  font-size:1.1em;
+}
+
+.error {
+  display: none;
+  color: red;
+  font-size:1.1em;
+}
+
+.center-me {
+  margin: 0 auto;
+  text-align: center;
+}
