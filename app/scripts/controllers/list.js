@@ -108,11 +108,11 @@ var products = [
 angular.module('storeApp')
 .controller('productListCtrl', function ($scope) {
 	
-		var prod = $scope.prod;
+		// var prod = $scope.prod;
 
 		$scope.prod = products;
 
-		console.log(prod);
+		// console.log(prod);
 
 
 });
