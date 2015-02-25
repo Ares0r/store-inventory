@@ -1,0 +1,123 @@
+[
+	{
+		"productName": "Snickers",
+		"netPrice": 1.00,
+		"grossPrice":1.23,
+		"invoiceNumber": "FA/01/2014",
+		"invoiceDay": "01-01-2014",
+		"measureUnit": "szt.",
+		"productVAT": 23,
+
+	},
+	{
+		"productName": "Mars",
+		"netPrice": 1.00,
+		"grossPrice":1.23,
+		"invoiceNumber": "FA/01/2014",
+		"invoiceDay": "01-01-2014",
+		"measureUnit": "szt.",
+		"productVAT": 23,
+
+	},
+	{
+		"productName": "Vifon",
+		"netPrice": 1.50,
+		"grossPrice":1.85,
+		"invoiceNumber": "FA/02/2014",
+		"invoiceDay": "01-02-2014",
+		"measureUnit": "szt.",
+		"productVAT": 23,
+
+	},
+	{
+		"productName": "Mop",
+		"netPrice": 30,
+		"grossPrice":37,
+		"invoiceNumber": "FA/02/2014",
+		"invoiceDay": "23-02-2014",
+		"measureUnit": "szt.",
+		"productVAT": 23,
+
+	},
+	{
+		"productName": "Lodówka",
+		"netPrice": 1520.02,
+		"grossPrice":1869.62,
+		"invoiceNumber": "FA/02/2014",
+		"invoiceDay": "01-02-2014",
+		"measureUnit": "szt.",
+		"productVAT": 23,
+
+	}
+
+]
+
+
+
+
+
+<tr>
+				<td>Mars</td>
+				<td>1.00</td>
+				<td>1.23</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+			</tr>
+						<tr>
+				<td>Teatralny</td>
+				<td>1.00</td>
+				<td>1.23</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+			</tr>
+						<tr>
+				<td>Miotła</td>
+				<td>10000</td>
+				<td>12300</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+			</tr>
+						<tr>
+				<td>Chupa-chups</td>
+				<td>1.00</td>
+				<td>1.23</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+			</tr>
+						<tr>
+				<td>Papier toaletowy</td>
+				<td>1.00</td>
+				<td>1.23</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+			</tr>
+ 			<tr>
+				<td>Tabaka Michigan 500 gram</td>
+				<td>1.00</td>
+				<td>1.23</td>
+				<td>FA/01/2015</td>
+				<td>01-12-2014</td>
+				<td>23%</td>
+				<td><button class="btn btn-primary btn-sm">Info {{productName}}</button></td>
+				<td><button class="btn btn-info btn-sm">Edit</button></td>
+				<td><button class="btn btn-danger btn-sm">Delete</button></td>

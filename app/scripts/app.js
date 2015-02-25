@@ -30,7 +30,11 @@ angular
       })
       .when('/list-product', {
         templateUrl: 'views/list-product.html',
-        controller: 'listCtrl'
+        controller: 'productListCtrl'
+      })
+      .when('/product-card', {
+        templateUrl: 'views/product-card.html',
+        controller: 'productCardCtrl'
       })
       .otherwise({
         redirectTo: '/'
