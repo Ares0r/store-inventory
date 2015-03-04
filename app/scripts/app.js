@@ -36,6 +36,10 @@ angular
         templateUrl: 'views/product-card.html',
         controller: 'productCardCtrl'
       })
+      .when('/product-info/:param', {
+        templateUrl: 'views/product-info.html',
+        controller:'productInfoCtrl'    
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -13,15 +13,15 @@
 	<table class="table table-striped table-hover">
 		<thead class="spacer" >
 			<tr>
-				<th>Name</th>
-				<th>net Price</th>
-				<th>gross Price</th>
-				<th>Invoice number</th>
-				<th>Invoice Day</th>
+				<th>Nazwa</th>
+				<th>Cena netto</th>
+				<th>Cena brutto</th>
+				<th>Numer faktury</th>
+				<th>Data faktury</th>
 				<th>VAT</th>
 				<th>info</th>
-				<th>edit</th>
-				<th>delete</th>
+				<th>Zmiana</th>
+				<th>Usuwanie</th>
 			</tr>
 		</thead>
 		<tbody >
@@ -32,9 +32,9 @@
 				<td>{{product.invoiceNumber}}</td>
 				<td>{{product.invoiceDay}}</td>
 				<td>{{product.productVAT}}%</td>
-				<td><button class="btn btn-primary btn-sm" ng-click="product-info/{{product.id}}">Info</button></td>
-				<td><button class="btn btn-info btn-sm">Edit</button></td>
-				<td><button class="btn btn-danger btn-sm">Delete</button></td>
+				<td><a ng-href="#/product-info/{{product.id}}"><button class="btn btn-primary btn-sm">Info</button></a></td>
+				<td><button class="btn btn-info btn-sm">Zmień</button></td>
+				<td><button class="btn btn-danger btn-sm">Usuń</button></td>
 			</tr>
 		</tbody>
 	</table>
