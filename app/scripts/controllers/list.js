@@ -17,7 +17,7 @@ var products = [
 		invoiceNumber: 'FA/01/2014',
 		invoiceDay: '01-01-2014',
 		measureUnit: 'szt.',
-		productVAT: 23,
+		productVAT: 23
 
 	},
 	{
@@ -28,7 +28,7 @@ var products = [
 		invoiceNumber: 'FA/01/2014',
 		invoiceDay: '01-01-2014',
 		measureUnit: 'szt.',
-		productVAT: 23,
+		productVAT: 23
 
 	},
 	{
@@ -39,7 +39,7 @@ var products = [
 		invoiceNumber: 'FA/02/2014',
 		invoiceDay: '01-02-2014',
 		measureUnit: "szt.",
-		productVAT: 23,
+		productVAT: 23
 
 	},
 	{
@@ -50,7 +50,7 @@ var products = [
 		invoiceNumber: 'FA/02/2014',
 		invoiceDay: '23-02-2014',
 		measureUnit: 'szt.',
-		productVAT: 23,
+		productVAT: 23
 
 	},
 	{
@@ -61,7 +61,7 @@ var products = [
 		invoiceNumber: 'FA/02/2014',
 		invoiceDay: '01-02-2014',
 		measureUnit: 'szt.',
-		productVAT: 8,
+		productVAT: 8
 
 	},
 	{
@@ -72,7 +72,7 @@ var products = [
 		invoiceNumber: 'FA/03/2014',
 		invoiceDay: '10-02-2014',
 		measureUnit: 'szt.',
-		productVAT: 11,
+		productVAT: 11
 
 	},
 	{
@@ -83,7 +83,7 @@ var products = [
 		invoiceNumber: 'FA/04/2014',
 		invoiceDay: '15-02-2014',
 		measureUnit: 'szt.',
-		productVAT: 23,
+		productVAT: 23
 
 	}
   ];

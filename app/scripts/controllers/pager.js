@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pager', ['ui.bootstrap'])
 .controller('PaginationDemoCtrl', function ($scope, $log) {
   $scope.totalItems = 64;
