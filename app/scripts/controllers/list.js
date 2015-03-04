@@ -38,7 +38,7 @@ var products = [
 		grossPrice:1.85,
 		invoiceNumber: 'FA/02/2014',
 		invoiceDay: '01-02-2014',
-		measureUnit: "szt.",
+		measureUnit: 'szt.',
 		productVAT: 23
 
 	},

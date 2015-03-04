@@ -1,3 +1,5 @@
+/* globals Parse, $ */
+
 'use strict';
 
 /**
@@ -30,12 +32,12 @@ angular.module('storeApp')
     var StoreInventory = Parse.Object.extend('StoreInventory');
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
-      success: function(object) {
+      success: function() {
         $('.success').show();
         $('input').val('');
         // console.log("it works!");
       },
-      error: function(model, error) {
+      error: function() {
         $('.error').show();
         // console.log("it's broken");
       }
