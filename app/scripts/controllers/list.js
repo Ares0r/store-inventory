@@ -8,109 +8,122 @@
  * Controller of the storeApp
  */
 
-var products = [
- 	{
-		id:1,
-		productName: 'Snickers',
-		netPrice: 1.00,
-		grossPrice:1.23,
-		invoiceNumber: 'FA/01/2014',
-		invoiceDay: '01-01-2014',
-		measureUnit: 'szt.',
-		productVAT: 23
-
-	},
-	{
-		id:2,
-		productName: 'Mars',
-		netPrice: 1.00,
-		grossPrice:1.23,
-		invoiceNumber: 'FA/01/2014',
-		invoiceDay: '01-01-2014',
-		measureUnit: 'szt.',
-		productVAT: 23
-
-	},
-	{
-		id:3,
-		productName: 'Vifon',
-		netPrice: 1.50,
-		grossPrice:1.85,
-		invoiceNumber: 'FA/02/2014',
-		invoiceDay: '01-02-2014',
-		measureUnit: 'szt.',
-		productVAT: 23
-
-	},
-	{
-		id:4,
-		productName: 'Mop',
-		netPrice: 30,
-		grossPrice:37,
-		invoiceNumber: 'FA/02/2014',
-		invoiceDay: '23-02-2014',
-		measureUnit: 'szt.',
-		productVAT: 23
-
-	},
-	{
-		id:101,
-		productName: 'Lodówka',
-		netPrice: 1520.02,
-		grossPrice:1869.62,
-		invoiceNumber: 'FA/02/2014',
-		invoiceDay: '01-02-2014',
-		measureUnit: 'szt.',
-		productVAT: 8
-
-	},
-	{
-		id:1010,
-		productName: 'Coca-Cola',
-		netPrice: 0.60,
-		grossPrice:0.74,
-		invoiceNumber: 'FA/03/2014',
-		invoiceDay: '10-02-2014',
-		measureUnit: 'szt.',
-		productVAT: 11
-
-	},
-	{
-		id:2010,
-		productName: 'Pepsi',
-		netPrice: 0.60,
-		grossPrice:0.74,
-		invoiceNumber: 'FA/04/2014',
-		invoiceDay: '15-02-2014',
-		measureUnit: 'szt.',
-		productVAT: 23
-
-	}
-  ];
-
 // var products = [
 //  	{
+// 		id:1,
 // 		productName: 'Snickers',
 // 		netPrice: 1.00,
 // 		grossPrice:1.23,
 // 		invoiceNumber: 'FA/01/2014',
 // 		invoiceDay: '01-01-2014',
 // 		measureUnit: 'szt.',
-// 		productVAT: 23,
+// 		productVAT: 23
+
+// 	},
+// 	{
+// 		id:2,
+// 		productName: 'Mars',
+// 		netPrice: 1.00,
+// 		grossPrice:1.23,
+// 		invoiceNumber: 'FA/01/2014',
+// 		invoiceDay: '01-01-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 23
+
+// 	},
+// 	{
+// 		id:3,
+// 		productName: 'Vifon',
+// 		netPrice: 1.50,
+// 		grossPrice:1.85,
+// 		invoiceNumber: 'FA/02/2014',
+// 		invoiceDay: '01-02-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 23
+
+// 	},
+// 	{
+// 		id:4,
+// 		productName: 'Mop',
+// 		netPrice: 30,
+// 		grossPrice:37,
+// 		invoiceNumber: 'FA/02/2014',
+// 		invoiceDay: '23-02-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 23
+
+// 	},
+// 	{
+// 		id:101,
+// 		productName: 'Lodówka',
+// 		netPrice: 1520.02,
+// 		grossPrice:1869.62,
+// 		invoiceNumber: 'FA/02/2014',
+// 		invoiceDay: '01-02-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 8
+
+// 	},
+// 	{
+// 		id:1010,
+// 		productName: 'Coca-Cola',
+// 		netPrice: 0.60,
+// 		grossPrice:0.74,
+// 		invoiceNumber: 'FA/03/2014',
+// 		invoiceDay: '10-02-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 11
+
+// 	},
+// 	{
+// 		id:2010,
+// 		productName: 'Pepsi',
+// 		netPrice: 0.60,
+// 		grossPrice:0.74,
+// 		invoiceNumber: 'FA/04/2014',
+// 		invoiceDay: '15-02-2014',
+// 		measureUnit: 'szt.',
+// 		productVAT: 23
 
 // 	}
-// ];
-
-
-
-
+//   ];
 
 angular.module('storeApp')
-.controller('productListCtrl', function ($scope) {
+.controller('productListCtrl', function ($scope,$http) {
 	
+
+$http.get('https://api.parse.com/1/classes/StoreInventory',
+  			{headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+  		}).
+  		success( function(data,status) {
+
+  			var prod = data.results;
+
+  			$scope.prod = prod;
+
+  			console.log('success');
+  			console.log(data+' '+status);
+  			
+  			// console.log(prod.results[0].productName);
+  		}).
+  		error( function(data,status) {
+  			console.log('error');
+  			console.log(data+' '+status);
+  		});
+
+
+
+
+
+
+
 		// var prod = $scope.prod;
 
-		$scope.prod = products;
+		// $scope.prod = products;
 
 		// console.log(prod);
 

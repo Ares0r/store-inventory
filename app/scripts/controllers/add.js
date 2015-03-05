@@ -13,7 +13,9 @@
 angular.module('storeApp')
   .controller('AddProductCtrl', function ($scope) {
   	 	//$scope.product = '';
-  	$scope.addProduct = function() {
+  	
+
+    $scope.addProduct = function() {
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
   		var products = { 
@@ -26,6 +28,12 @@ angular.module('storeApp')
   			};	
 
         // conole.log();
+
+
+    // $scope.$watch('product.netPrice', function(newVal) {
+    //     $scope.product.netPrice = newVal.replace(/,/g,'.');
+    //   });  
+
 
   	Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
     

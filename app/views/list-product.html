@@ -1,11 +1,13 @@
-	<h4>Listing produktów</h4>
+<h4>Listing produktów</h4>
 
 <div ng-controller="productListCtrl as productListing">
 
 
 <form ng-submit="" class="center-me">
 <label class="label-width" for="productName">Filtruj produkty [wpisz nazwę]</label>
-	<input type="text" name="" value="" data-ng-model="product.productName" placeholder=""> <br>
+	<input type="text" name="" value="" data-ng-model="search.productName" placeholder=""> <br>
+	<!-- uncomment below line to search by all product data -->
+	<!-- <input type="text" name="" value="" data-ng-model="productSearch" placeholder=""> <br> -->
 </form>
 
 <br><br>
@@ -25,14 +27,16 @@
 			</tr>
 		</thead>
 		<tbody >
-			<tr ng-repeat="product in prod">
+			<tr ng-repeat="product in prod | filter:search:strict ">
+			<!-- uncomment below to search by all fields -->
+			<!-- <tr ng-repeat="product in prod | filter:productSearch "> -->
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>
 				<td>{{product.grossPrice | number:2}} zł</td>
 				<td>{{product.invoiceNumber}}</td>
 				<td>{{product.invoiceDay}}</td>
 				<td>{{product.productVAT}}%</td>
-				<td><a ng-href="#/product-info/{{product.id}}"><button class="btn btn-primary btn-sm">Info</button></a></td>
+				<td><a ng-href="#/product-info/{{product.objectId}}"><button class="btn btn-primary btn-sm">Info</button></a></td>
 				<td><button class="btn btn-info btn-sm">Zmień</button></td>
 				<td><button class="btn btn-danger btn-sm">Usuń</button></td>
 			</tr>

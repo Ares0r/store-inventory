@@ -36,9 +36,17 @@ angular
         templateUrl: 'views/product-card.html',
         controller: 'productCardCtrl'
       })
-      .when('/product-info/:param', {
+      .when('/product-info/:productId', {
         templateUrl: 'views/product-info.html',
         controller:'productInfoCtrl'    
+      })
+      .when('/product-change/:productId', {
+        templateUrl: 'views/product-change.html',
+        controller:'productChangeCtrl'    
+      })
+      .when('/product-delete/:productId', {
+        templateUrl: 'views/product-delete.html',
+        controller:'productDeleteCtrl'    
       })
       .otherwise({
         redirectTo: '/'

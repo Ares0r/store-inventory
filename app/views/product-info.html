@@ -1,1 +1,27 @@
-product-info.html
+<div class="jumbotron">
+  <h4>Informacje o produkcie <br><br> {{prod.productName}}</h4>
+</div>
+<div ng-controller="productInfoCtrl">
+<div class="row">
+
+id: {{productId}}
+name : {{prod.productName}}
+<hr>
+<h4>Dane o produkcie:</h4>
+<div class="row">
+  <div class="col-lg-6">
+    Nazwa produktu: {{prod.productName}} <br>
+    Cena produktu: {{prod.netPrice}} zł <br>
+    Numer faktury: {{prod.invoiceNumber}} <br>
+    Data wystawienia faktury: {{product.invoiceDay}} <br>
+    Jednostka miary: {{product.measureUnit}} <br>
+  </div>
+  <div class="col-lg-6">
+    Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
+    Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) | number:2 }} zł <br>
+    Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
+  </div>
+
+</div>
+
+</div>
