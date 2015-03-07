@@ -38,9 +38,9 @@ angular.module('storeApp')
 
   		}).
   		success( function(data,status) {
-  			console.log('success');
-  			console.log(data+' '+status);
-  			console.log(data.productName);
+  			// console.log('success');
+  			// console.log(data+' '+status);
+  			// console.log(data.productName);
 
   			var prod = data;
 
@@ -49,8 +49,11 @@ angular.module('storeApp')
 
   		}).
   		error( function(data,status) {
-  			console.log('error');
-  			console.log(data+' '+status);
+  			
+        $scope.message = data+' '+status;
+
+        // console.log('error');
+  			// console.log(data+' '+status);
   		});
 
   		// console.log($routeParams);
