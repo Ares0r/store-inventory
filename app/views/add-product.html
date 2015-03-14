@@ -24,12 +24,17 @@
 </div>
 
 <div class="col-lg-6">
-
 	<label class="label-width" for="productWeight">Gramatura produktu</label>
 	<input type="text" name="productWeight" value="" data-ng-model="product.productWeight" placeholder="">
 
+	<label class="label-width" for="productWeight">Kod produktu</label>
+	<input type="text" name="productWeight" value="" data-ng-model="product.prodCode" placeholder="">
+
+	<label class="label-width" for="productWeight">Marża produktu</label>
+	<input type="number" name="productWeight" value="" data-ng-model="product.margin" placeholder="">
+
 	<label class="label-width" for="productVAT">VAT produktu</label>
-	<input type="text" name="productVAT" value="" data-ng-model="product.productVAT" placeholder="">
+	<input type="number" name="productVAT" value="" data-ng-model="product.productVAT" placeholder="">
 
 </div>
 
@@ -60,8 +65,9 @@ Produkt został dodany poprawnie, dzięki.
 	</div>
 	<div class="col-lg-6">
 		Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
-		Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) | number:2 }} zł <br>
+		Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) + product.netPrice*1000/product.productWeight * (product.margin/100) | number:2 }} zł <br>
 		Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
+		Cena brutto na półkę: {{product.netPrice + product.netPrice * (product.productVAT/100) +  product.netPrice * (product.margin/100) | number:2}} zł <br>
 	</div>
 
 </div>

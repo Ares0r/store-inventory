@@ -39,7 +39,7 @@ angular.module('storeApp')
   		}).
   		success( function(data,status) {
   			// console.log('success');
-  			// console.log(data+' '+status);
+  			console.log(data+' '+status);
   			// console.log(data.productName);
 
   			var prod = data;

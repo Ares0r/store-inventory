@@ -1,27 +1,41 @@
 <div class="jumbotron">
-  <h4>Informacje o produkcie <br><br> {{prod.productName}}</h4>
+  <span class="product-card-title">Informacje o produkcie <br> <h2>{{prod.productName}}</h2></span>
 </div>
 <div ng-controller="productInfoCtrl">
 <div class="row">
 
-id: {{productId}}
-name : {{prod.productName}}
+<div class=""></div>
+<div class="pricetag-title"><h2>{{prod.productName}}</h2></div>
+  <div class="pricetag-price"><h3>Cena netto: {{prod.netPrice}} zł</h3>   </div>
+  <div class="pricetag-price"><h3>Cena brutto (z marżą): {{prod.grossShelfPrice | number:2 }} zł</h3>   </div>
+  <div class="pricetag-productCode">Kod produktu: {{prod.productCode}}</div>
+</div>
+
+<hr>
+name : {{prod.productName}} <br>
+kod produktu w bazie: {{productId}}
+
 <hr>
 <h4>Dane o produkcie:</h4>
 <div class="row">
   <div class="col-lg-6">
     Nazwa produktu: {{prod.productName}} <br>
-    Cena produktu: {{prod.netPrice}} zł <br>
-    Numer faktury: {{prod.invoiceNumber}} <br>
-    Data wystawienia faktury: {{product.invoiceDay}} <br>
-    Jednostka miary: {{product.measureUnit}} <br>
+    Cena netto produktu: {{prod.netPrice}} zł <br>
+    Numer ostatniej faktury: {{prod.invoiceNumber}} <br>
+    Data wystawienia faktury: {{prod.invoiceDay}} <br>
+    Jednostka miary: {{prod.measureUnit}} <br>
   </div>
-  <div class="col-lg-6">
-    Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
-    Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) | number:2 }} zł <br>
-    Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
-  </div>
+  
+
+
 
 </div>
+
+
+
+
+
+</div>
+
 
 </div>
