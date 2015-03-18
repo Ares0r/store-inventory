@@ -1,3 +1,5 @@
+/* globals Parse, $ */
+
 'use strict';
 
 /**
@@ -11,6 +13,26 @@
 
 angular.module('storeApp')
   .controller('productChangeCtrl', function ($scope, $routeParams, $http) {
+
+
+  $scope.changeProduct = function() {
+      // console.log('clicked');
+
+      var newPrice = $scope.product.newNetPrice;
+
+      var UpdatePrice = Parse.Object.extend('updatePrice');
+      var updatePrice = new UpdatePrice();
+
+      updatePrice.save($routeParams, {
+        success: function(updatePrice) {
+          updatePrice.set('prod.netPrice',newPrice);
+          updatePrice.save();
+        }
+      });
+};
+
+
+
 
     $http.get('https://api.parse.com/1/classes/StoreInventory/'+$routeParams.productId,
   			{
