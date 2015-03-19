@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<h4>Proszę zalogować się do systemu</h4>
+</div>
+<div ng-controller="loginCtrl">
+
+<div class="row">
+<!-- <form action="add-product_submit" method="get" accept-charset="utf-8"> -->
+<form ng-submit="validateLogin()" method="post">
+
+<div>
+	<label class="label-width" for="userLogin">Login</label>
+	<input type="text" name="userLogin" value="" data-ng-model="user.login" placeholder=""> <br>
+
+	<label class="label-width" for="userPassword">Hasło</label>
+	<input type="password" name="userPassword" data-ng-model="user.password" placeholder=""> <br>
+</div>
+	<button class="btn btn-primary col-lg-12" ng-submit="validateLogin()">Zaloguj</button>
+</form>
+
+
+</div>

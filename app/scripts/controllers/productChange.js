@@ -2,71 +2,52 @@
 
 'use strict';
 
-/**
- * @ngdoc function
- * @name storeApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the storeApp
- */
-
-
 angular.module('storeApp')
-  .controller('productChangeCtrl', function ($scope, $routeParams, $http) {
+  .controller('productChangeCtrl', function ($scope, $routeParams) {
 
+$scope.productId = $routeParams.productId;
 
-  $scope.changeProduct = function() {
-      // console.log('clicked');
+Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
+    var ListItems = Parse.Object.extend("StoreInventory");
+    var listItems = new Parse.Query(ListItems);
+    listItems.get($routeParams.productId, {
+        success: function(listItems) {
+          
+          var prod = listItems.attributes;
+          console.log('prod: ',prod);
+          $scope.prod = prod;
+          console.log('product pobrany');
 
-      var newPrice = $scope.product.newNetPrice;
-
-      var UpdatePrice = Parse.Object.extend('updatePrice');
-      var updatePrice = new UpdatePrice();
-
-      updatePrice.save($routeParams, {
-        success: function(updatePrice) {
-          updatePrice.set('prod.netPrice',newPrice);
-          updatePrice.save();
+          // The object was retrieved successfully.
+        },
+        error: function(object, error) {
+          console.log(object,error);
+          // The object was not retrieved successfully.
+          // error is a Parse.Error with an error code and message.
         }
       });
-};
 
 
 
+//   $scope.changeProduct = function() {
+//       // console.log('clicked');
 
-    $http.get('https://api.parse.com/1/classes/StoreInventory/'+$routeParams.productId,
-  			{
-  				headers:{
-                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-                'Content-Type' : 'application/json'
-            },
-
-  		}).
-  		success( function(data,status) {
-  			// console.log('success');
-  			console.log(data+' '+status);
-  			// console.log(data.productName);
-
-  			var prod = data;
-
-  			$scope.prod = prod;
+//       var newPrice = $scope.product.newNetPrice;
 
 
-  		}).
-  		error( function(data,status) {
-  			
-        $scope.message = data+' '+status;
+//       Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
 
-        // console.log('error');
-  			// console.log(data+' '+status);
-  		});
+//       var UpdatePrice = Parse.Object.extend('updatePrice');
+//       var updatePrice = new UpdatePrice();
 
-  		// console.log($routeParams);
-
- 		$scope.productId = $routeParams.productId;
-
-  		// var prod = $scope.prod;
+//       updatePrice.save(null, {
+//         success: function(updatePrice) {
+//           console.log('changed');
+//           updatePrice.set('netPrice',newPrice);
+//           updatePrice.save();
+//         }
+//       });
+// };
 
   	    $scope.awesomeThings = [
       'HTML5 Boilerplate',
