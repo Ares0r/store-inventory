@@ -8,7 +8,7 @@
   <div class="pricetag-price"><h3>Cena netto z bazy danych: {{prod.netPrice | number:2}} zł</h3>   </div>
   <label class="label-width" for="netPrice">Nowa cena netto</label>
     <input type="number" min="0.01" step="0.01" name="netPrice" data-ng-model="newNetPrice" placeholder=""> <br>
-    <button class="btn btn-primary col-lg-12" ng-submit="changePrice()">Zapisz</button>
+    <button class="btn btn-primary col-lg-12" ng-click="changePrice()">Zapisz</button>
 </div>
 
 </div>

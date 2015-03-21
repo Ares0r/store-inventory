@@ -11,66 +11,58 @@
 
 angular.module('storeApp')
   .controller('loginCtrl', function ($scope,$http) {
-    
-    
+
+
+  function doSLoginMessage (message,callback) { 
+    alert(message);
+    callback(window.location.replace('/#/main'));
+  }
+
+
 
     $scope.validateLogin = function() {
 
-      var login = $scope.user.login;
-      var pass = $scope.user.password;
-
-      Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
-
-      Parse.User.logIn(login,pass, {
-        success: function(user) {
-          console.log('its ok!');
-          window.location.replace('/#/main');
-        },
-        error: function(user,error) {
-
-          console.log('error: ',error,user);
-        }
-      });
+      // var login = $scope.user.login;
+      // var pass = $scope.user.password;
 
 
+      //javascript version
+      // Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
 
-        // console.log(login, pass);
+      // Parse.User.logIn(login,pass, {
+      //   success: function(user) {
+      //     console.log('its ok!');
+      //     window.location.replace('/#/main');
+      //   },
+      //   error: function(user,error) {
 
-
-
-      // $http.get('https://api.parse.com/1/login',
-      //   {headers:{
-      //           'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-      //           'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-      //           'Content-Type' : 'application/json'
-      //       }
-      // }).
-      // success( function(data,status) {
-
-      //   var login = $scope.user.login;
-      //   var pass = $scope.user.password;
-
-      //     // var url = 'https://api.parse.com/1/login'+login+'/'+pass;
-      //     // console.log(url);
-
-      //   console.log('success');
-      //   console.log(data, status);
-      //   console.log(login,pass);
-        
-        
-      //   // console.log(prod.results[0].productName);
-      // }).
-      // error( function(data,status) {
-      //   console.log('error');
-      //   console.log(data, status);
-
-      //   var login = $scope.user.login;
-      //   var pass = $scope.user.password;
-
-      //   console.log(login,pass);
+      //     console.log('error: ',error,user);
+      //   }
       // });
-
-
+        //REST API version
+      $http.get('https://api.parse.com/1/login',
+        {headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            },
+          params: {
+            'username': $scope.user.login,
+            'password': $scope.user.password
+          }
+      }).
+      success( function(data,status) {
+        console.log('success');
+        console.log(data, status);
+       doSLoginMessage('Gratulacje zalogowałeś się!');
+      }).
+      error( function(data,status) {
+        console.log('error');
+        console.log(data, status);
+        // var login = $scope.user.login;
+        alert('Niestety logowanie nie powiodło się!');
+        // console.log(login,pass);
+      });
 };
 
     $scope.awesomeThings = [

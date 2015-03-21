@@ -3,53 +3,61 @@
 'use strict';
 
 angular.module('storeApp')
-  .controller('productChangeCtrl', function ($scope, $routeParams) {
+  .controller('productChangeCtrl', function ($scope, $routeParams,$http) {
 
 $scope.productId = $routeParams.productId;
+var newPrice = $scope.newNetPrice;
 
-Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
-    var ListItems = Parse.Object.extend("StoreInventory");
-    var listItems = new Parse.Query(ListItems);
-    listItems.get($routeParams.productId, {
-        success: function(listItems) {
+$http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
+        {headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+      }).
+        success(function(data,status) {
+          console.log(data,status);
+
           
-          var prod = listItems.attributes;
-          console.log('prod: ',prod);
-          $scope.prod = prod;
-          console.log('product pobrany');
 
-          // The object was retrieved successfully.
-        },
-        error: function(object, error) {
-          console.log(object,error);
-          // The object was not retrieved successfully.
-          // error is a Parse.Error with an error code and message.
-        }
+      }).
+        error(function(data,status) {
+          console.log(data,status);
+        });
+
+    $scope.changePrice = function() {
+
+    // console.log('cena: ',$scope.newPrice);
+  
+      // console.log($scope.prod.netPrice);
+      console.log($scope.newNetPrice);
+      console.log($routeParams);
+
+
+    $http.put('https://api.parse.com/1/classes/StoreInventory/'+$routeParams,
+      {headers:{
+            'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+            'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+            'Content-Type': 'application/json'
+      },
+      params: {
+        'netPrice': $scope.newNetPrice
+      }
+      }).
+      success(function(data,status){
+        console.log(data,status);
+        console.log('it works!');
+      }).
+      error(function(){
+        console.log(data,status);
       });
 
 
 
-//   $scope.changeProduct = function() {
-//       // console.log('clicked');
+    };
+        
 
-//       var newPrice = $scope.product.newNetPrice;
-
-
-//       Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
-
-//       var UpdatePrice = Parse.Object.extend('updatePrice');
-//       var updatePrice = new UpdatePrice();
-
-//       updatePrice.save(null, {
-//         success: function(updatePrice) {
-//           console.log('changed');
-//           updatePrice.set('netPrice',newPrice);
-//           updatePrice.save();
-//         }
-//       });
-// };
-
-  	    $scope.awesomeThings = [
+      $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
