@@ -38,7 +38,7 @@
 				<td>{{product.productVAT}}%</td>
 				<td><a ng-href="#/product-info/{{product.objectId}}"><button class="btn btn-primary btn-sm">Info</button></a></td>
 				<td><a ng-href="#/product-change/{{product.objectId}}"><button class="btn btn-warning btn-sm">Zmień cenę</button></a></td>
-				<td><button class="btn btn-danger btn-sm">Usuń</button></td>
+				<td><a ng-click="delProduct()"><button class="btn btn-danger btn-sm">Usuń</button></td>
 			</tr>
 		</tbody>
 	</table>

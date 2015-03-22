@@ -38,6 +38,17 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
 });
 
 
+
+var delFunction = function(object) {
+
+  console.log('object deleted');
+  console.log(object);
+
+
+};
+
+
+
 	// connecting with parse
 		// Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
 		// var StoreInventory = Parse.Object.extend('StoreInventory');

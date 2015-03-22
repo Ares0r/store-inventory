@@ -1,4 +1,4 @@
-/* globals Parse, $ */
+/* globals Parse */
 
 'use strict';
 
@@ -6,46 +6,63 @@ angular.module('storeApp')
   .controller('productChangeCtrl', function ($scope, $routeParams,$http) {
 
 $scope.productId = $routeParams.productId;
-var newPrice = $scope.newNetPrice;
+// var newPrice = $scope.newNetPrice;
 
-// $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
-//         {headers:{
-//                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-//                 'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-//                 'Content-Type' : 'application/json'
-//             }
-//       }).
-//         success(function(data,status) {
-//           console.log(data,status);
-
-//       }).
-//         error(function(data,status) {
-//           console.log(data,status);
-//         });
+$http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
+        {headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+      }).
+        success(function(data,status) {
+          console.log(data,status);
+            $scope.prod = data;
+      }).
+        error(function(data,status) {
+          console.log(data,status);
+        });
 
     $scope.changePrice = function() {
 
-    // console.log('cena: ',$scope.newPrice);
-  
+      // console.log('cena: ',$scope.newPrice);
       // console.log($scope.prod.netPrice);
-      console.log($scope.newNetPrice);
-      console.log($routeParams);
+      // console.log($scope.newNetPrice);
+      // console.log($routeParams);
 
 
       Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
 
       var UpdatePrice = Parse.Object.extend('StoreInventory');
-      var updatePrice = new UpdatePrice();
+      // console.log('UpdatePrice');
+      var query = new Parse.Query(UpdatePrice);
+      // console.log('query');
+
+      query.equalTo('objectId',$scope.productId);
+      // var querySmall = query.equalTo('objectId',$scope.productId);
+      // console.log('query.equalTo');
+      // console.log('query.small '+querySmall);
+      query.first({
+        success: function(object) {
+
+          // console.log('query.success');
+                   
+          console.log($scope.prod.invoiceDay);
+
+          // setting new netprice
+          // object.set('netPrice',$scope.newNetPrice);
 
 
-      updatePrice.save(null, {
-        success: function(updatePrice) {
-          updatePrice.set('netPrice',$scope.newNetPrice);
-          updatePrice.save();
+          // saving changed object
+          // object.save();
+          
+        },
+        error: function(error) {
+          console.log('query.error');
+          alert('Error: ' +error.code + ' ' + error.message);
         }
+
       });
-
-
 
 
     // $http.put('https://api.parse.com/1/classes/StoreInventory/'+$routeParams,
