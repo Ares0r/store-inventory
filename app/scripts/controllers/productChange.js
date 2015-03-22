@@ -8,22 +8,20 @@ angular.module('storeApp')
 $scope.productId = $routeParams.productId;
 var newPrice = $scope.newNetPrice;
 
-$http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
-        {headers:{
-                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-                'Content-Type' : 'application/json'
-            }
-      }).
-        success(function(data,status) {
-          console.log(data,status);
+// $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
+//         {headers:{
+//                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+//                 'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+//                 'Content-Type' : 'application/json'
+//             }
+//       }).
+//         success(function(data,status) {
+//           console.log(data,status);
 
-          
-
-      }).
-        error(function(data,status) {
-          console.log(data,status);
-        });
+//       }).
+//         error(function(data,status) {
+//           console.log(data,status);
+//         });
 
     $scope.changePrice = function() {
 
@@ -34,23 +32,37 @@ $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
       console.log($routeParams);
 
 
-    $http.put('https://api.parse.com/1/classes/StoreInventory/'+$routeParams,
-      {headers:{
-            'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-            'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-            'Content-Type': 'application/json'
-      },
-      params: {
-        'netPrice': $scope.newNetPrice
-      }
-      }).
-      success(function(data,status){
-        console.log(data,status);
-        console.log('it works!');
-      }).
-      error(function(){
-        console.log(data,status);
+      Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
+
+      var UpdatePrice = Parse.Object.extend('StoreInventory');
+      var updatePrice = new UpdatePrice();
+
+
+      updatePrice.save(null, {
+        success: function(updatePrice) {
+          updatePrice.set('netPrice',$scope.newNetPrice);
+          updatePrice.save();
+        }
       });
+
+
+
+
+    // $http.put('https://api.parse.com/1/classes/StoreInventory/'+$routeParams,
+    //   {headers:{
+    //         'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+    //         'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+    //         'Content-Type': 'application/json'
+    //   }
+    //   }).
+    //   success(function(data,status){
+    //     'netPrice': $scope.newNetPrice;
+    //     console.log(data,status);
+    //     console.log('it works!');
+    //   }).
+    //   error(function(){
+    //     console.log(data,status);
+    //   });
 
 
 
