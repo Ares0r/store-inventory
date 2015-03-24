@@ -39,23 +39,31 @@ $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
       // console.log('query');
 
       query.equalTo('objectId',$scope.productId);
-      // var querySmall = query.equalTo('objectId',$scope.productId);
-      // console.log('query.equalTo');
-      // console.log('query.small '+querySmall);
       query.first({
         success: function(object) {
+        // console.log('query.success');
+        // console.log($scope.prod.invoiceDay);
+        // console.log('oldGrossPrice: '+$scope.prod.grossPrice);
+         // console.log('newGrossPrice: '+newGrossPrice);
+         // console.log($scope.prod.grossShelfPrice);
 
-          // console.log('query.success');
-                   
-          console.log($scope.prod.invoiceDay);
+       var newGrossPrice = $scope.newNetPrice + ($scope.newNetPrice * $scope.prod.productVAT/100);
+       var newGrossShelfPrice = $scope.newNetPrice + ($scope.newNetPrice * $scope.prod.productVAT/100) + ($scope.newNetPrice * $scope.prod.productMargin/100);
 
-          // setting new netprice
-          // object.set('netPrice',$scope.newNetPrice);
+        // console.log('shelf price: '+$scope.prod.grossShelfPrice);
+        // console.log('margin : '+$scope.prod.productMargin);
+        // console.log('vat : '+$scope.prod.productVAT);
+        // console.log('new shelf price: '+newGrossShelfPrice);
 
+         // setting new netprice
+         object.set('grossPrice',newGrossPrice);
+         object.set('grossShelfPrice', newGrossShelfPrice);
+         object.set('netPrice',$scope.newNetPrice);
 
-          // saving changed object
-          // object.save();
-          
+         // saving changed object
+         object.save();
+         alert('Cena została zmieniona!');
+         window.location.replace('/#/list-product');  
         },
         error: function(error) {
           console.log('query.error');

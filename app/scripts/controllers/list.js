@@ -35,17 +35,40 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
   			console.log('error');
   			console.log(data+' '+status);
   		});
+
+
+  $scope.delProduct = function(object) {
+
+  console.log(object);
+
+  $http.delete('https://api.parse.com/1/classes/StoreInventory/'+object,
+        {headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+      }).
+      success( function(data,status) {
+
+        console.log('success');
+        console.log(data+' '+status);
+        alert('Produkt został usunięty!');
+        window.location('/#/list-product');
+        
+        // console.log(prod.results[0].productName);
+      }).
+      error( function(data,status) {
+        console.log('error');
+        console.log(data+' '+status);
+      });
+
+};
+
 });
 
 
 
-var delFunction = function(object) {
 
-  console.log('object deleted');
-  console.log(object);
-
-
-};
 
 
 
@@ -56,4 +79,3 @@ var delFunction = function(object) {
 
 		// this.productList = products;
 		// console.log(productList);
-

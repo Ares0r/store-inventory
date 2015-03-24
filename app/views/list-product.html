@@ -34,11 +34,11 @@
 				<td>{{product.netPrice | number:2}} zł</td>
 				<td>{{product.grossPrice | number:2}} zł</td>
 				<td>{{product.invoiceNumber}}</td>
-				<td>{{product.invoiceDay}}</td>
+				<td>{{product.invoiceDay }}</td>
 				<td>{{product.productVAT}}%</td>
 				<td><a ng-href="#/product-info/{{product.objectId}}"><button class="btn btn-primary btn-sm">Info</button></a></td>
 				<td><a ng-href="#/product-change/{{product.objectId}}"><button class="btn btn-warning btn-sm">Zmień cenę</button></a></td>
-				<td><a ng-click="delProduct()"><button class="btn btn-danger btn-sm">Usuń</button></td>
+				<td><button ng-click="delProduct('{{product.objectId}}')" class="btn btn-danger btn-sm">Usuń</button></td>
 			</tr>
 		</tbody>
 	</table>

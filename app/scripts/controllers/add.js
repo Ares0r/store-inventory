@@ -39,7 +39,7 @@ angular.module('storeApp')
         'grossPrice': $scope.product.grossPrice,
         'grossShelfPrice' : $scope.product.grossShelfPrice,
   			'invoiceNumber' : $scope.product.invoiceNumber,
-  			'invoiceDay' : $scope.product.invoiceDay,
+  			'invoiceDay' : $scope.product.invoiceDay.toLocaleDateString(),
   			'measureUnit' : $scope.product.measureUnit,
         'productVAT': $scope.product.productVAT,
         'productCode': $scope.product.prodCode,
@@ -87,12 +87,12 @@ angular.module('storeApp')
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
       success: function() {
-        $('.success').show();
+        $('.success').show().html('Dane zostały dodane poprawnie. Dzięki!');
         $('input').val('');
         // console.log("it works!");
       },
       error: function() {
-        $('.error').show();
+        $('.error').show().html('Niestety nie udało się dodać produktu. Spróbuj ponownie.');
         // console.log("it's broken");
       }
     });
