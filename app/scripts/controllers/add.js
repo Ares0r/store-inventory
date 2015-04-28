@@ -11,11 +11,11 @@
  */
 
 angular.module('storeApp')
-  .controller('AddProductCtrl', function ($scope) {
+  .controller('AddProductCtrl', function ($scope,$cookieStore) {
   	 	//$scope.product = '';
   	
 
-
+      
 
     $scope.addProduct = function() {
   		// console.log($scope.product);
@@ -25,6 +25,7 @@ angular.module('storeApp')
         console.log('grossPrice: '+grossPrice);
 
          $scope.product.grossPrice = grossPrice;
+         console.log($cookieStore.get('username'));
 
 
         var grossShelfPrice = $scope.product.netPrice + ($scope.product.netPrice * $scope.product.productVAT/100) + ($scope.product.netPrice * $scope.product.margin/100);
@@ -43,8 +44,11 @@ angular.module('storeApp')
   			'measureUnit' : $scope.product.measureUnit,
         'productVAT': $scope.product.productVAT,
         'productCode': $scope.product.prodCode,
-        'productMargin': $scope.product.margin
+        'productMargin': $scope.product.margin,
+        'registered': $cookieStore.get('username')
   			};	
+
+
 
         // conole.log();
 

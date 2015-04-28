@@ -10,12 +10,13 @@
  */
 
 angular.module('storeApp')
-  .controller('loginCtrl', function ($scope,$http) {
+  .controller('loginCtrl', function ($scope,$http,$cookieStore) {
 
 
-  function doSLoginMessage (message,callback) { 
+
+  function doSLoginMessage (message) { 
     alert(message);
-    callback(window.location.replace('/#/main'));
+    window.location.replace('/#/main');
   }
 
 
@@ -54,6 +55,13 @@ angular.module('storeApp')
       success( function(data,status) {
         console.log('success');
         console.log(data, status);
+        
+        
+        // console.log(userLogin);
+
+        $cookieStore.put('username',data.username);
+        // document.cookie = 'username='+data.username;
+        // console.log($scope.logged);
        doSLoginMessage('Gratulacje zalogowałeś się!');
       }).
       error( function(data,status) {
