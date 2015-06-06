@@ -12,7 +12,7 @@
 
 <br><br>
 
-	<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover" id="product-table">
 		<thead class="spacer" >
 			<tr>
 				<th>Nazwa</th>
@@ -42,6 +42,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<a onclick="$('#product-table').tableExport({type:'excel',escape:'false'});">dddd</a>
 	
 	
 
