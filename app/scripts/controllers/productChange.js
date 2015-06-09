@@ -3,24 +3,24 @@
 'use strict';
 
 angular.module('storeApp')
-  .controller('productChangeCtrl', function ($scope, $routeParams,$http) {
+  .controller('productChangeCtrl', function ($scope, $routeParams, $http) {
 
 $scope.productId = $routeParams.productId;
 // var newPrice = $scope.newNetPrice;
 
-$http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
+$http.get('https://api.parse.com/1/classes/StoreInventory/' + $scope.productId,
         {headers:{
                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
                 'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
                 'Content-Type' : 'application/json'
             }
       }).
-        success(function(data,status) {
-          console.log(data,status);
+        success(function (data, status) {
+          console.log(data, status);
             $scope.prod = data;
       }).
-        error(function(data,status) {
-          console.log(data,status);
+        error(function (data, status) {
+          console.log(data, status);
         });
 
     $scope.changePrice = function() {
@@ -40,7 +40,7 @@ $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
 
       query.equalTo('objectId',$scope.productId);
       query.first({
-        success: function(object) {
+        success: function (object) {
         // console.log('query.success');
         // console.log($scope.prod.invoiceDay);
         // console.log('oldGrossPrice: '+$scope.prod.grossPrice);
@@ -56,16 +56,16 @@ $http.get('https://api.parse.com/1/classes/StoreInventory/'+$scope.productId,
         // console.log('new shelf price: '+newGrossShelfPrice);
 
          // setting new netprice
-         object.set('grossPrice',newGrossPrice);
+         object.set('grossPrice', newGrossPrice);
          object.set('grossShelfPrice', newGrossShelfPrice);
-         object.set('netPrice',$scope.newNetPrice);
+         object.set('netPrice', $scope.newNetPrice);
 
          // saving changed object
          object.save();
          alert('Cena została zmieniona!');
          window.location.replace('/#/list-product');  
         },
-        error: function(error) {
+        error: function (error) {
           console.log('query.error');
           alert('Error: ' +error.code + ' ' + error.message);
         }

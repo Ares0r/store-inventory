@@ -2,7 +2,7 @@
 
 <div ng-controller="productListCtrl as productListing">
 
-
+<button type="button" ng-click="exportProduct()">Export to CSV</button>
 <form ng-submit="" class="center-me">
 <label class="label-width" for="productName">Filtruj produkty [wpisz nazwę]</label>
 	<input type="text" name="" value="" data-ng-model="search.productName" placeholder=""> <br>
@@ -40,9 +40,4 @@
 			</tr>
 		</tbody>
 	</table>
-	<div ng-controller="">
-		<button type="button" ng-csv="exData" filename="test.csv" field-separator="," decimal-separator=".">Export</button>
-	</div>
-	
-
 </div>

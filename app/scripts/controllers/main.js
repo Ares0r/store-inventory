@@ -8,7 +8,7 @@
  * Controller of the storeApp
  */
 angular.module('storeApp')
-  .controller('MainCtrl', function ($scope,$cookieStore) {
+  .controller('MainCtrl', function ($scope, $cookieStore) {
 
   	// console.log($cookies.getAll());
 

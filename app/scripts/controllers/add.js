@@ -15,12 +15,6 @@ angular.module('storeApp')
 
     // $scope.addr = 'StoreInventory';
 
-    $scope.connection = {
-      'shortAddr' : 'stIn',
-      'Addr'  :  'https://api.parse.com/1/classes/StoreInventory/', 
-    }
-
-
     $scope.addProduct = function() {
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
@@ -54,7 +48,7 @@ angular.module('storeApp')
 
   	Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
     
-    var StoreInventory = Parse.Object.extend(connection.shortAddr);
+    var StoreInventory = Parse.Object.extend('StoreInventory');
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
       success: function() {

@@ -10,7 +10,7 @@
  */
 
 angular.module('storeApp')
-  .controller('loginCtrl', function ($scope,$http,$cookieStore) {
+  .controller('loginCtrl', function ($scope, $http, $cookieStore) {
 
 
 
@@ -52,19 +52,19 @@ angular.module('storeApp')
             'password': $scope.user.password
           }
       }).
-      success( function(data,status) {
+      success( function(data, status) {
         console.log('success');
         console.log(data, status);
         
         
         // console.log(userLogin);
 
-        $cookieStore.put('username',data.username);
+        $cookieStore.put('username', data.username);
         // document.cookie = 'username='+data.username;
         // console.log($scope.logged);
        doSLoginMessage('Gratulacje zalogowałeś się!');
       }).
-      error( function(data,status) {
+      error( function(data, status) {
         console.log('error');
         console.log(data, status);
         // var login = $scope.user.login;

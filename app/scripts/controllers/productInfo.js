@@ -12,7 +12,7 @@
 angular.module('storeApp')
   .controller('productInfoCtrl', function ($scope, $routeParams, $http) {
 
-   		$http.get('https://api.parse.com/1/classes/StoreInventory/'+$routeParams.productId,
+   		$http.get('https://api.parse.com/1/classes/StoreInventory/' + $routeParams.productId,
   			{
   				headers:{
                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
