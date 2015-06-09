@@ -12,23 +12,7 @@
 angular.module('storeApp')
   .controller('productInfoCtrl', function ($scope, $routeParams, $http) {
 
-  		
-// $http.get('https://api.parse.com/1/classes/StoreInventory/sY6YNOZSX3',
-//    {
-//      headers: {
-//                 'X-Parse-Application-Id': eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d,
-//                 'X-Parse-REST-API-Key': 38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k,
-//                 'Content-Type' : 'application/json'
-//               },
-//      params:  { 
-//                  where: whereQuery,
-//                  limit: 2,
-//                  // count: 1
-//                  // include: "something"
-//               }
-//    });
-
-  		$http.get('https://api.parse.com/1/classes/StoreInventory/'+$routeParams.productId,
+   		$http.get('https://api.parse.com/1/classes/StoreInventory/'+$routeParams.productId,
   			{
   				headers:{
                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',

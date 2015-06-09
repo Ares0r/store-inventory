@@ -8,11 +8,10 @@
  * Controller of the storeApp
  */
 
-
 angular.module('storeApp')
 .controller('productListCtrl', function ($scope,$http) {
 	
-
+// $http.get('https://api.parse.com/1/classes/StoreInventory',
 $http.get('https://api.parse.com/1/classes/StoreInventory',
   			{headers:{
                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
@@ -22,7 +21,8 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
   		}).
   		success( function(data,status) {
 
-  			var prod = data.results;
+        var prod = data.results;
+
 
   			$scope.prod = prod;
 
@@ -39,7 +39,7 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
 
   $scope.delProduct = function(object) {
 
-  console.log(object);
+  // console.log(object);
 
   $http.delete('https://api.parse.com/1/classes/StoreInventory/'+object,
         {headers:{
@@ -52,7 +52,7 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
 
         console.log('success');
         console.log(data+' '+status);
-        alert('Produkt został usunięty!');
+        // alert('Produkt został usunięty!');
         window.location('/#/list-product');
         
         // console.log(prod.results[0].productName);
@@ -64,12 +64,12 @@ $http.get('https://api.parse.com/1/classes/StoreInventory',
 
 };
 
+})
+
+
+.controller('productCheck', function ($scope) {
+    
 });
-
-
-
-
-
 
 
 	// connecting with parse

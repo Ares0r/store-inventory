@@ -73,3 +73,31 @@ Produkt został dodany poprawnie, dzięki.
 </div>
 
 </div>
+<hr>
+<br><br>
+W bazie danych są już wprowadzone takie produkty jak:
+<div ng-controller="productListCtrl as productListing">
+<form ng-submit="" class="center-me">
+	<input type="hidden" name="" value="" data-ng-model="product.productName" placeholder=""> <br>
+</form>
+	<table class="table table-striped table-hover" id="product-table">
+		<thead class="spacer" >
+			<tr>
+				<th>Nazwa</th>
+				<th>Cena netto</th>
+				<th>Cena brutto</th>
+				<th>Data faktury</th>
+				<th>VAT</th>
+			</tr>
+		</thead>
+		<tbody >
+			<tr ng-repeat="product in prod | filter:product:strict ">
+				<td>{{product.productName}}</td>
+				<td>{{product.netPrice | number:2}} zł</td>
+				<td>{{product.grossPrice | number:2}} zł</td>
+				<td>{{product.invoiceDay }}</td>
+				<td>{{product.productVAT}}%</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>

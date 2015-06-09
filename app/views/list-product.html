@@ -6,8 +6,6 @@
 <form ng-submit="" class="center-me">
 <label class="label-width" for="productName">Filtruj produkty [wpisz nazwę]</label>
 	<input type="text" name="" value="" data-ng-model="search.productName" placeholder=""> <br>
-	<!-- uncomment below line to search by all product data -->
-	<!-- <input type="text" name="" value="" data-ng-model="productSearch" placeholder=""> <br> -->
 </form>
 
 <br><br>
@@ -42,8 +40,9 @@
 			</tr>
 		</tbody>
 	</table>
-	<a onclick="$('#product-table').tableExport({type:'excel',escape:'false'});">dddd</a>
-	
+	<div ng-controller="">
+		<button type="button" ng-csv="exData" filename="test.csv" field-separator="," decimal-separator=".">Export</button>
+	</div>
 	
 
 </div>

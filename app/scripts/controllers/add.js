@@ -12,10 +12,14 @@
 
 angular.module('storeApp')
   .controller('AddProductCtrl', function ($scope,$cookieStore) {
-  	 	//$scope.product = '';
-  	
 
-      
+    // $scope.addr = 'StoreInventory';
+
+    $scope.connection = {
+      'shortAddr' : 'stIn',
+      'Addr'  :  'https://api.parse.com/1/classes/StoreInventory/', 
+    }
+
 
     $scope.addProduct = function() {
   		// console.log($scope.product);
@@ -48,46 +52,9 @@ angular.module('storeApp')
         'registered': $cookieStore.get('username')
   			};	
 
-
-
-        // conole.log();
-
-    // $scope.$watch('product.netPrice', function(newVal) {
-    //     $scope.product.netPrice = newVal.replace(/,/g,'.');
-    //   });  
-
-
-        // console.log(products);
-
-
-//sending data
-
-    // $http.defaults.headers.post = {'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
-    //             'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
-    //             'Content-Type' : 'application/json'};
-
-    //   $http.post('https://api.parse.com/1/classes/StoreInventory').
-    //   success( function(data,status) {
-
-    //      var data = {};
-
-    //     //$scope.prod = prod;
-
-    //     console.log('success');
-    //     console.log(data+' '+status);
-        
-    //     // console.log(prod.results[0].productName);
-    //   }).
-    //   error( function(data,status) {
-    //     console.log('error');
-    //     console.log(data+' '+status);
-    //   });
-
-
-
   	Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
     
-    var StoreInventory = Parse.Object.extend('StoreInventory');
+    var StoreInventory = Parse.Object.extend(connection.shortAddr);
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
       success: function() {
