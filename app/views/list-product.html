@@ -13,6 +13,7 @@
 	<table class="table table-striped table-hover" id="product-table">
 		<thead class="spacer" >
 			<tr>
+				<th>L.p.</th>
 				<th>Nazwa</th>
 				<th>Cena netto</th>
 				<th>Cena brutto</th>
@@ -28,6 +29,7 @@
 			<tr ng-repeat="product in prod | filter:search:strict ">
 			<!-- uncomment below to search by all fields -->
 			<!-- <tr ng-repeat="product in prod | filter:productSearch "> -->
+				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>
 				<td>{{product.grossPrice | number:2}} zł</td>

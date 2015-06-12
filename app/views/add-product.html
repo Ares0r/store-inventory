@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="col-lg-12 center-me">
 	<h4>Proszę dodać informacje o produkcie</h4>
 </div>
 <div ng-controller="AddProductCtrl">
@@ -13,28 +13,48 @@
 	<label class="label-width" for="netPrice">Cena Netto</label>
 	<input type="number" min="0.01" step="0.01" name="netPrice" data-ng-model="product.netPrice" placeholder=""> <br>
 
-	<label class="label-width" for="invoiceNumber">Numer faktury</label>
-	<input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br>
+	<!-- <label class="label-width" for="invoiceNumber">Numer faktury</label>
+	<input type="text" name="invoiceNumber" value="" data-ng-model="product.invoiceNumber" placeholder=""> <br> -->
 
 	<label class="label-width" for="invoiceDay">Data z faktury</label>
 	<input type="date" name="invoiceDay" value="" data-ng-model="product.invoiceDay" placeholder="dd-mm-rrrr"> <br>
 
 	<label class="label-width" for="measureUnit">Jednostka miary</label>
 	<input type="text" name="measureUnit" value="" data-ng-model="product.measureUnit" placeholder="">
-</div>
-
-<div class="col-lg-6">
-	<label class="label-width" for="productWeight">Gramatura produktu</label>
-	<input type="text" name="productWeight" value="" data-ng-model="product.productWeight" placeholder="">
-
-	<label class="label-width" for="productWeight">Kod produktu</label>
-	<input type="text" name="productWeight" value="" data-ng-model="product.prodCode" placeholder="">
-
+	
 	<label class="label-width" for="productWeight">Marża produktu</label>
 	<input type="number" name="productWeight" value="" data-ng-model="product.margin" placeholder="">
 
 	<label class="label-width" for="productVAT">VAT produktu</label>
 	<input type="number" name="productVAT" value="" data-ng-model="product.productVAT" placeholder="">
+</div>
+
+<div class="col-lg-6">
+	<!-- <label class="label-width" for="productWeight">Gramatura produktu</label>
+	<input type="text" name="productWeight" value="" data-ng-model="product.productWeight" placeholder="">
+
+	<label class="label-width" for="productWeight">Kod produktu</label>
+	<input type="text" name="productWeight" value="" data-ng-model="product.prodCode" placeholder="">
+ -->
+
+	<h4>Wprowadzone dane:</h4>
+		<div class="row">
+	<div>
+		Nazwa produktu: {{product.productName}} <br>
+		Cena produktu: {{product.netPrice}} zł <br>
+		<!-- Numer faktury: {{product.invoiceNumber}} <br> -->
+		<!-- Data wystawienia faktury: {{product.invoiceDay}} <br> -->
+		Jednostka miary: {{product.measureUnit}} <br>
+	<!-- </div> -->
+	<!-- <div class="col-lg-6"> -->
+		Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
+		Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) + product.netPrice*1000/product.productWeight * (product.margin/100) | number:2 }} zł <br>
+		Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
+		Cena brutto na półkę: {{product.netPrice + product.netPrice * (product.productVAT/100) +  product.netPrice * (product.margin/100) | number:2}} zł <br>
+	</div>
+
+</div>
+
 
 </div>
 
@@ -51,9 +71,7 @@ Produkt został dodany poprawnie, dzięki.
 <div class="error">
 Produkt został dodany poprawnie, dzięki.
 </div>
-<br><br>
-
-<hr>
+<!-- <hr>
 <h4>Wprowadzone dane:</h4>
 <div class="row">
 	<div class="col-lg-6">
@@ -71,10 +89,10 @@ Produkt został dodany poprawnie, dzięki.
 	</div>
 
 </div>
-
+ -->
 </div>
 <hr>
-<br><br>
+<br>
 W bazie danych są już wprowadzone takie produkty jak:
 <div ng-controller="productListCtrl as productListing">
 <form ng-submit="" class="center-me">
@@ -83,19 +101,17 @@ W bazie danych są już wprowadzone takie produkty jak:
 	<table class="table table-striped table-hover" id="product-table">
 		<thead class="spacer" >
 			<tr>
+				<th>L.p.</th>
 				<th>Nazwa</th>
 				<th>Cena netto</th>
-				<th>Cena brutto</th>
-				<th>Data faktury</th>
 				<th>VAT</th>
 			</tr>
 		</thead>
 		<tbody >
 			<tr ng-repeat="product in prod | filter:product:strict ">
+				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>
-				<td>{{product.grossPrice | number:2}} zł</td>
-				<td>{{product.invoiceDay }}</td>
 				<td>{{product.productVAT}}%</td>
 			</tr>
 		</tbody>
