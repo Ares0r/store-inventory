@@ -9,35 +9,31 @@
  */
 
 angular.module('storeApp')
-.controller('productListCtrl', function ($scope, $http) {
-	
+    .controller('productListCtrl', function ($scope, $http) {
   // $http.get('https://api.parse.com/1/classes/StoreInventory',
   //params: limit - how many shown, skip - skipping number of items (for pager)
-$http.get('https://api.parse.com/1/classes/StoreInventory',
-  			{params: {
-          limit:1000,        
+        $http.get('https://api.parse.com/1/classes/StoreInventory',
+            {params: {
+          limit:1000,
         },
         headers:{
                 'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
                 'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
                 'Content-Type' : 'application/json'
             }
-  		}).
-  		success( function(data,status) {
-       
+  }).
+   success( function(data,status) {
        var prod = data.results;
        $scope.prod = prod;
 
-  			console.log('success');
-  			console.log(data+' '+status);
-  			
-  			// console.log(prod.results[0].productName);
-  		}).
-  		error( function(data,status) {
-  			console.log('error');
-  			console.log(data+' '+status);
-  		});
-
+  console.log('success');
+  console.log(data+' '+status);
+  // console.log(prod.results[0].productName);
+  }).
+  error( function(data,status) {
+  console.log('error');
+  console.log(data+' '+status);
+  });
 
   $scope.delProduct = function(object) {
 
@@ -175,8 +171,7 @@ $scope.exportProduct = function() {
 };
 
 
-
-});
+    });
 
 
 

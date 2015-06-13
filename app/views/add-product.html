@@ -94,7 +94,7 @@ Produkt został dodany poprawnie, dzięki.
 <hr>
 <br>
 W bazie danych są już wprowadzone takie produkty jak:
-<div ng-controller="productListCtrl as productListing">
+<div ng-controller="productListCtrl">
 <form ng-submit="" class="center-me">
 	<input type="hidden" name="" value="" data-ng-model="product.productName" placeholder=""> <br>
 </form>
@@ -108,7 +108,8 @@ W bazie danych są już wprowadzone takie produkty jak:
 			</tr>
 		</thead>
 		<tbody >
-			<tr ng-repeat="product in prod | filter:product:strict ">
+		
+			<tr ng-repeat="product in prod | filter:product:strict">
 				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>

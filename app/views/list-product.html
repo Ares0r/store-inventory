@@ -1,10 +1,12 @@
 <h4>Listing produktów</h4>
 
-<div ng-controller="productListCtrl as productListing">
+W bazie danych obecnie znajduje się: <span class="prodNum">{{prod.length}}</span> produktów.
 
+<div ng-controller="productListCtrl as productListing">
+<br><br>
 <button type="button" ng-click="exportProduct()">Export to CSV</button>
 <form ng-submit="" class="center-me">
-<label class="label-width" for="productName">Filtruj produkty [wpisz nazwę]</label>
+<label class="label-width" for="productName">Filtruj produkty [wpisz nazwę] </label>
 	<input type="text" name="" value="" data-ng-model="search.productName" placeholder=""> <br>
 </form>
 
