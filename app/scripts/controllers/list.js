@@ -50,8 +50,8 @@ angular.module('storeApp')
 
         console.log('success');
         console.log(data+' '+status);
-        // alert('Produkt został usunięty!');
-        window.location('/#/list-product');
+        alert('Produkt został usunięty poprawnie!');
+        // window.location('/#/list-product');
         
         // console.log(prod.results[0].productName);
       }).

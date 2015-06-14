@@ -11,7 +11,7 @@
  */
 
 angular.module('storeApp')
-  .controller('AddProductCtrl', function ($scope,$cookieStore) {
+  .controller('AddProductCtrl', function ($scope, $cookieStore) {
 
     // $scope.addr = 'StoreInventory';
 
@@ -52,7 +52,7 @@ angular.module('storeApp')
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
       success: function() {
-        $('.success').show().html('Dane zostały dodane poprawnie. Dzięki!');
+        $('.success').show().html('Dane zostały dodane poprawnie. Dziękuję!');
         $('input').val('');
         // console.log("it works!");
       },
