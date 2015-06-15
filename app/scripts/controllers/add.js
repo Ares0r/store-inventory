@@ -11,7 +11,7 @@
  */
 
 angular.module('storeApp')
-  .controller('AddProductCtrl', function ($scope, $cookieStore) {
+  .controller('AddProductCtrl', function ($scope, $cookieStore, $window) {
 
     // $scope.addr = 'StoreInventory';
 
@@ -54,12 +54,20 @@ angular.module('storeApp')
       success: function() {
         $('.success').show().html('Dane zostały dodane poprawnie. Dziękuję!');
         $('input').val('');
+        alert('Dane zostały dodane!');
+        $window.location.reload(); 
+
+
         // console.log("it works!");
       },
       error: function() {
         $('.error').show().html('Niestety nie udało się dodać produktu. Spróbuj ponownie.');
         // console.log("it's broken");
       }
+
+
+
+
     });
 
   	};
