@@ -108,7 +108,7 @@ W bazie danych są już wprowadzone takie produkty jak:
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="product in prod | filter:product:strict">
+			<tr dir-paginate="product in prod | filter:product:strict | itemsPerPage: 10">
 				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>

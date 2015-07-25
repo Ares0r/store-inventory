@@ -10,7 +10,7 @@
  */
 
 angular.module('storeApp')
-  .controller('loginCtrl', function ($scope, $http, $cookieStore) {
+  .controller('loginCtrl', function ($scope, $http, $cookies) {
 
 
 
@@ -59,7 +59,7 @@ angular.module('storeApp')
         
         // console.log(userLogin);
 
-        $cookieStore.put('username', data.username);
+        $cookies.put('username', data.username);
         // document.cookie = 'username='+data.username;
         // console.log($scope.logged);
        doSLoginMessage('Gratulacje zalogowałeś się!');

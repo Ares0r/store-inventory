@@ -25,6 +25,14 @@ angular.module('storeApp')
    success( function(data,status) {
        var prod = data.results;
        $scope.prod = prod;
+       $scope.pageProd = prod;
+       var howManyProds = prod.length;
+       var prodsOnPage = 20;
+       var howManyPages = howManyProds/prodsOnPage;
+       console.log(howManyPages);
+
+
+       var pager = "";
 
   console.log('success');
   console.log(data+' '+status);
@@ -34,6 +42,69 @@ angular.module('storeApp')
   console.log('error');
   console.log(data+' '+status);
   });
+
+
+
+$scope.showFirstTen = function() {
+          $http.get('https://api.parse.com/1/classes/StoreInventory',
+            {params: {
+          limit:10,
+        },
+        headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+  }).
+   success( function(data,status) {
+       var prod = data.results;
+       $scope.pageProd = prod;
+
+  console.log('success');
+  console.log(data+' '+status);
+  // console.log(prod.results[0].productName);
+  }).
+  error( function(data,status) {
+  console.log('error');
+  console.log(data+' '+status);
+  });
+
+
+
+};
+
+
+$scope.showLastTen = function() {
+          $http.get('https://api.parse.com/1/classes/StoreInventory',
+            {params: {
+          limit:10,
+          skip:10,
+        },
+        headers:{
+                'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+                'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+                'Content-Type' : 'application/json'
+            }
+  }).
+   success( function(data,status) {
+       var prod = data.results;
+       $scope.pageProd = prod;
+
+  console.log('success');
+  console.log(data+' '+status);
+  // console.log(prod.results[0].productName);
+  }).
+  error( function(data,status) {
+  console.log('error');
+  console.log(data+' '+status);
+  });
+
+
+
+};
+
+
+
 
   $scope.delProduct = function(object) {
 
