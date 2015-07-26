@@ -29,18 +29,19 @@ angular.module('storeApp')
        var howManyProds = prod.length;
        var prodsOnPage = 20;
        var howManyPages = howManyProds/prodsOnPage;
-       console.log(howManyPages);
+       // console.log(howManyPages);
 
 
        var pager = "";
 
   console.log('success');
-  console.log(data+' '+status);
+  // console.log(data+' '+status);
+  console.log(status);
   // console.log(prod.results[0].productName);
   }).
   error( function(data,status) {
   console.log('error');
-  console.log(data+' '+status);
+  console.log(status);
   });
 
 
@@ -61,12 +62,12 @@ $scope.showFirstTen = function() {
        $scope.pageProd = prod;
 
   console.log('success');
-  console.log(data+' '+status);
+  console.log(status);
   // console.log(prod.results[0].productName);
   }).
   error( function(data,status) {
   console.log('error');
-  console.log(data+' '+status);
+  console.log(status);
   });
 
 
@@ -91,12 +92,12 @@ $scope.showLastTen = function() {
        $scope.pageProd = prod;
 
   console.log('success');
-  console.log(data+' '+status);
+  console.log(status);
   // console.log(prod.results[0].productName);
   }).
   error( function(data,status) {
   console.log('error');
-  console.log(data+' '+status);
+  console.log(status);
   });
 
 
@@ -120,7 +121,7 @@ $scope.showLastTen = function() {
       success( function(data,status) {
 
         console.log('success');
-        console.log(data+' '+status);
+        console.log(status);
         alert('Produkt został usunięty poprawnie!');
         // window.location('/#/list-product');
         
@@ -128,7 +129,7 @@ $scope.showLastTen = function() {
       }).
       error( function(data,status) {
         console.log('error');
-        console.log(data+' '+status);
+        console.log(status);
       });
 
 };
@@ -222,16 +223,16 @@ $scope.exportProduct = function() {
   // var csvContent = 'data:text/csv;charset=utf-8,';
   readyData = 'data:text/csv;charset=\'utf-8\','+ readyData;    
 
-  console.log(readyData);
+  // console.log(readyData);
 
 
   var encodedUri = encodeURI(readyData);
    
-   console.log(encodedUri);
+   // console.log(encodedUri);
 
   var link = document.createElement('a');
   
-  console.log(link);
+  // console.log(link);
 
   link.setAttribute('href', encodedUri);
   link.setAttribute('download', 'my_data.csv');

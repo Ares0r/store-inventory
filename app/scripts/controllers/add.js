@@ -11,7 +11,7 @@
  */
 
 angular.module('storeApp')
-  .controller('AddProductCtrl', function ($scope, $cookieStore, $window) {
+  .controller('AddProductCtrl', function ($scope, $cookies, $window) {
 
     // $scope.addr = 'StoreInventory';
 
@@ -20,14 +20,14 @@ angular.module('storeApp')
   		// console.log($scope.product.productName);
 
         var grossPrice = $scope.product.netPrice + ($scope.product.netPrice * $scope.product.productVAT/100);
-        console.log('grossPrice: '+grossPrice);
+        // console.log('grossPrice: '+grossPrice);
 
          $scope.product.grossPrice = grossPrice;
-         console.log($cookieStore.get('username'));
+         // console.log($cookies.get('username'));
 
 
         var grossShelfPrice = $scope.product.netPrice + ($scope.product.netPrice * $scope.product.productVAT/100) + ($scope.product.netPrice * $scope.product.margin/100);
-        console.log('grossShelfPrice: '+grossShelfPrice);
+        // console.log('grossShelfPrice: '+grossShelfPrice);
 
          $scope.product.grossShelfPrice = grossShelfPrice;
 
@@ -43,8 +43,10 @@ angular.module('storeApp')
         'productVAT': $scope.product.productVAT,
         'productCode': $scope.product.prodCode,
         'productMargin': $scope.product.margin,
-        'registered': $cookieStore.get('username')
+        'registered': $cookies.get('username')
   			};	
+
+        // console.log(products);
 
   	Parse.initialize('eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d', 'LZDVFfrpgr7q5pJyFFE23NhziBxP6fcaieYNweWI');
     
@@ -52,10 +54,15 @@ angular.module('storeApp')
     var storeInventory = new StoreInventory();
       storeInventory.save(products, {
       success: function() {
-        $('.success').show().html('Dane zostały dodane poprawnie. Dziękuję!');
+        // $('allert').css('display': 'visible');
+        $('.allert').show();
+        // $('.success').show().html('Dane zostały dodane poprawnie. Dziękuję!');
         $('input').val('');
-        alert('Dane zostały dodane!');
-        $window.location.reload(); 
+        // alert('Dane zostały dodane!');
+        // console.log('Dane zostały dodane poprawnie');
+        setTimeout(location.reload, 100000);
+
+        location.reload(); 
 
 
         // console.log("it works!");
