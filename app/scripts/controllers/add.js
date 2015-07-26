@@ -60,9 +60,9 @@ angular.module('storeApp')
         $('input').val('');
         // alert('Dane zostały dodane!');
         // console.log('Dane zostały dodane poprawnie');
-        setTimeout(location.reload, 100000);
+        // setTimeout(location.reload, 100000);
 
-        location.reload(); 
+        // location.reload(); 
 
 
         // console.log("it works!");
