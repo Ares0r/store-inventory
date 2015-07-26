@@ -44,7 +44,9 @@ angular.module('storeApp')
   console.log(status);
   });
 
-
+$scope.refresh = function() {
+      location.reload();
+    }
 
 $scope.showFirstTen = function() {
           $http.get('https://api.parse.com/1/classes/StoreInventory',

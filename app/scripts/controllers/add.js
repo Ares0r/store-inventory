@@ -15,6 +15,10 @@ angular.module('storeApp')
 
     // $scope.addr = 'StoreInventory';
 
+    $scope.refresh = function() {
+      location.reload();
+    }
+
     $scope.addProduct = function() {
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
