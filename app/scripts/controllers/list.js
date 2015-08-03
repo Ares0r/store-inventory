@@ -107,8 +107,6 @@ $scope.showLastTen = function() {
 };
 
 
-
-
   $scope.delProduct = function(object) {
 
   // console.log(object);

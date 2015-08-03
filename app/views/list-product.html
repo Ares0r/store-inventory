@@ -14,6 +14,8 @@ W bazie danych obecnie znajduje się: <span class="prodNum">{{prod.length}}</spa
 <br>
 	<a class="glyphicon glyphicon-refresh" ng-click="refresh()"> refresh </a>
 <br><br>
+	<!-- <a class="" data-ng-model="search.netPrice | filter:netPrice">pokaz produkty z ceną 0 </a> -->
+<br><br>
 <nav>
   <ul class="pagination" ng-repeat="i in howManyPages">
     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -44,7 +46,9 @@ W bazie danych obecnie znajduje się: <span class="prodNum">{{prod.length}}</spa
 			<!-- <tr ng-repeat="product in prod | filter:productSearch "> -->
 				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
-				<td>{{product.netPrice | number:2}} zł</td>
+				<!-- <td>{{product.netPrice | number:2}} zł</td> -->
+				<td ng-if="product.netPrice <= 0" class="red-special"> {{product.netPrice | number:2}} zł</td>
+				<td ng-if="product.netPrice > 0"> {{product.netPrice | number:2}} zł</td>
 				<td>{{product.grossPrice | number:2}} zł</td>
 				<td>{{product.objectId}}</td>
 				<td>{{product.invoiceDay }}</td>

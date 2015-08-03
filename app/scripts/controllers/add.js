@@ -23,6 +23,10 @@ angular.module('storeApp')
   		// console.log($scope.product);
   		// console.log($scope.product.productName);
 
+      if ($scope.product.netPrice == null) {
+        $scope.product.netPrice = 0;
+      } 
+
         var grossPrice = $scope.product.netPrice + ($scope.product.netPrice * $scope.product.productVAT/100);
         // console.log('grossPrice: '+grossPrice);
 
