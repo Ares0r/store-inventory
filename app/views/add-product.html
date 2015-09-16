@@ -13,7 +13,7 @@
 
 <div class="col-lg-6">
 	<label class="label-width" for="productName">Nazwa produktu</label>
-	<input type="text" name="productName" value="" data-ng-model="product.productName" placeholder=""> <br>
+	<input type="text" name="productName" value="" data-ng-model="product.productName" ng-change="validateBase(product.productName)" placeholder=""> <br>
 
 	<label class="label-width" for="netPrice">Cena Netto</label>
 	<input type="number" min="0.01" step="0.01" name="netPrice" data-ng-model="product.netPrice" placeholder=""> <br>
@@ -76,32 +76,14 @@ Produkt został dodany poprawnie, dzięki.
 <div class="error">
 Produkt został dodany poprawnie, dzięki.
 </div>
-<!-- <hr>
-<h4>Wprowadzone dane:</h4>
-<div class="row">
-	<div class="col-lg-6">
-		Nazwa produktu: {{product.productName}} <br>
-		Cena produktu: {{product.netPrice}} zł <br>
-		Numer faktury: {{product.invoiceNumber}} <br>
-		Data wystawienia faktury: {{product.invoiceDay}} <br>
-		Jednostka miary: {{product.measureUnit}} <br>
-	</div>
-	<div class="col-lg-6">
-		Cena netto za kg: {{product.netPrice*1000/product.productWeight | number:2}} zł <br>
-		Cena brutto za kg: {{product.netPrice*1000/product.productWeight + product.netPrice*1000/product.productWeight * (product.productVAT/100) + product.netPrice*1000/product.productWeight * (product.margin/100) | number:2 }} zł <br>
-		Cena brutto: {{product.netPrice + product.netPrice * (product.productVAT/100) | number:2}} zł <br>
-		Cena brutto na półkę: {{product.netPrice + product.netPrice * (product.productVAT/100) +  product.netPrice * (product.margin/100) | number:2}} zł <br>
-	</div>
 
-</div>
- -->
 </div>
 <br>
 	<a class="glyphicon glyphicon-refresh" ng-click="refresh()"> refresh </a>
 <hr>
 <br>  
 W bazie danych są już wprowadzone takie produkty jak:
-<div ng-controller="productListCtrl">
+<div>
 <form ng-submit="" class="center-me">
 	<input type="hidden" name="" value="" data-ng-model="product.productName" placeholder=""> <br>
 </form>
@@ -115,7 +97,7 @@ W bazie danych są już wprowadzone takie produkty jak:
 			</tr>
 		</thead>
 		<tbody>
-			<tr dir-paginate="product in prod | filter:product:strict | itemsPerPage: 10">
+			<tr dir-paginate="product in searchedProd | filter:product:strict | itemsPerPage: 10">
 				<td>{{$index + 1}}</td>
 				<td>{{product.productName}}</td>
 				<td>{{product.netPrice | number:2}} zł</td>
