@@ -6,11 +6,57 @@
  * # MainCtrl
  * Controller of the storeApp
  */
+
+ /*
+    TODO:
+    taki sam system do wyszukiwania produktów jak jest przy dodawaniu prod razem z listowaniem
+
+
+
+ */
 angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$filter', function($scope, $http, $filter) {
     // $http.get('https://api.parse.com/1/classes/StoreInventory',
     //params: limit - how many shown, skip - skipping number of items (for pager)
 
-  
+    var showXProducts = 1000;
+
+
+     $scope.validateBase = function(productName) {
+        // console.log(productName);
+
+    $http.get('https://api.parse.com/1/classes/StoreInventory', {
+        params: {
+            'where':'{"productName": { "$regex" : "^'+productName+'"}}' 
+        },
+        headers: {
+            'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
+            'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
+            'Content-Type': 'application/json'
+        }
+    }).
+    success(function(data, status) {
+        var prod = data.results;
+        console.log(prod);
+        $scope.pageProd = prod; 
+        // var howManyProds = prod.length;
+        // var prodsOnPage = 20;
+        // var howManyPages = howManyProds / prodsOnPage;
+        // console.log(howManyPages);
+        // var pager = '';
+        // console.log('success');
+        console.log(data+' '+status);
+        // console.log(status);
+        // console.log(prod.results[0].productName);
+    }).
+    error(function(data, status) {
+        console.log('error');
+        console.log(status);
+    });
+
+       
+    };
+
+
 
     var fetchProducts = function() {
     $http.get('https://api.parse.com/1/classes/StoreInventory', {
@@ -25,7 +71,7 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         }
     }).
     success(function(data, status) {
-        prod = data.results;
+        var prod = data.results;
         // $scope.prod = prod;
 
         $scope.pageProd = prod;
@@ -54,8 +100,8 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         }
     }).
     success(function(data, status) {
-        prod = data.results;
-        // $scope.prod = prod;
+        var prod = data.results;
+        $scope.prod = prod;
         $scope.pageProd = prod;
         // console.log('ile prod: '+prod.length);
         // console.log(prod);

@@ -7,7 +7,7 @@ W bazie danych obecnie znajduje się: <span class="prodNum">{{prod.length}}</spa
 <button type="button" ng-click="exportProduct()">Export to CSV</button>
 <form ng-submit="" class="center-me">
 <label class="label-width" for="productName">Filtruj produkty [wpisz nazwę] </label>
-	<input type="text" name="" value="" data-ng-model="search.productName" placeholder=""> <br>
+	<input type="text" name="" value="" data-ng-model="product.productName" ng-change="validateBase(product.productName)" placeholder=""> <br>
 	<!-- <input type="text" name="" value="" data-ng-model="search" placeholder=""> <br> -->
 </form>
 
