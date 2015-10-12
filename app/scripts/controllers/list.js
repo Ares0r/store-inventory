@@ -36,7 +36,7 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
     }).
     success(function(data, status) {
         var prod = data.results;
-        console.log(prod);
+        // console.log(prod);
         $scope.pageProd = prod; 
         // var howManyProds = prod.length;
         // var prodsOnPage = 20;
@@ -107,7 +107,10 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         // console.log(prod);
 
         if (prod.length == showXProducts) {
+            console.log(prod.length);
             fetchProducts();
+        } else {
+            console.log('there is more to add');
         }
 
         // console.log('success');
