@@ -6,11 +6,11 @@
  * # MainCtrl
  * Controller of the storeApp
  */
-angular.module('storeApp').controller('loginCtrl', function($scope, $http, $cookies) {
+angular.module('storeApp').controller('loginCtrl', function($scope, $location, $http, $cookies) {
 
     function doSLoginMessage() {
         // alert(message);
-        window.location.replace('/#/main');
+        $location.path('main');
     }
 
     $scope.validateLogin = function() {
@@ -25,22 +25,15 @@ angular.module('storeApp').controller('loginCtrl', function($scope, $http, $cook
                 'username': $scope.user.login,
                 'password': $scope.user.password
             }
-        }).
-        success(function(data, status) {
-            console.log('success');
-            console.log(data, status);
+        })
+        .then(function(data) {
+            console.log('success',data, status);
             // console.log(userLogin);
             $cookies.put('username', data.username);
-            // document.cookie = 'username='+data.username;
-            // console.log($scope.logged);
             doSLoginMessage('Gratulacje zalogowałeś się!');
-        }).
-        error(function(data, status) {
-            console.log('error');
-            console.log(data, status);
-            // var login = $scope.user.login;
-            // alert('Niestety logowanie nie powiodło się!');
-            // console.log(login,pass);
+        })
+        .catch(function(data, status) {
+            console.log('error', data, status);
         });
     };
 });

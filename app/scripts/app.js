@@ -9,14 +9,14 @@
  */
 angular.module('storeApp', [
  'ngAnimate',
- 'ngCookies', 
- 'ngMessages', 
- 'ngResource', 
- 'ngRoute', 
- 'ngSanitize', 
- 'ngTouch', 
+ 'ngCookies',
+ 'ngMessages',
+ 'ngResource',
+ 'ngRoute',
+ 'ngSanitize',
+ 'ngTouch',
  'angularUtils.directives.dirPagination'])
-.config(function($routeProvider) {
+.config(function($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/login.html',
         controller: 'loginCtrl'
@@ -44,4 +44,6 @@ angular.module('storeApp', [
     }).otherwise({
         redirectTo: '/'
     });
+  $locationProvider
+      .html5Mode(true);
 });

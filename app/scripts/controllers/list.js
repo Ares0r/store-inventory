@@ -7,13 +7,6 @@
  * Controller of the storeApp
  */
 
- /*
-    TODO:
-    taki sam system do wyszukiwania produktów jak jest przy dodawaniu prod razem z listowaniem
-
-
-
- */
 angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$filter', function($scope, $http, $filter) {
     // $http.get('https://api.parse.com/1/classes/StoreInventory',
     //params: limit - how many shown, skip - skipping number of items (for pager)
@@ -26,18 +19,18 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
 
     $http.get('https://api.parse.com/1/classes/StoreInventory', {
         params: {
-            'where':'{"productName": { "$regex" : "^'+productName+'"}}' 
+            'where':'{"productName": { "$regex" : "^'+productName+'"}}'
         },
         headers: {
             'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
             'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
             'Content-Type': 'application/json'
         }
-    }).
-    success(function(data, status) {
+    })
+    .then(function(data, status) {
         var prod = data.results;
         // console.log(prod);
-        $scope.pageProd = prod; 
+        $scope.pageProd = prod;
         // var howManyProds = prod.length;
         // var prodsOnPage = 20;
         // var howManyPages = howManyProds / prodsOnPage;
@@ -47,13 +40,12 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         console.log(data+' '+status);
         // console.log(status);
         // console.log(prod.results[0].productName);
-    }).
-    error(function(data, status) {
-        console.log('error');
-        console.log(status);
+    })
+    .catch(function(data, status) {
+        console.log('error for validateBase', data, status);
     });
 
-       
+
     };
 
 
@@ -62,15 +54,16 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
     $http.get('https://api.parse.com/1/classes/StoreInventory', {
         params: {
             limit:showXProducts,
-            skip:showXProducts 
+            skip:showXProducts
         },
         headers: {
             'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
             'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
             'Content-Type': 'application/json'
         }
-    }).
-    success(function(data, status) {
+    })
+    // success(function(data, status) {
+    .then(function(data) {
         var prod = data.results;
         // $scope.prod = prod;
 
@@ -79,10 +72,9 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         // console.log('success');
         // console.log(data+' '+status);
         // console.log(status);
-    }).
-    error(function(data, status) {
-        console.log('error');
-        console.log(status);
+    })
+    .catch(function(data, status) {
+        console.log('error for fetchProducts:', data, status);
     });
 };
 
@@ -91,22 +83,22 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
 
     $http.get('https://api.parse.com/1/classes/StoreInventory', {
         params: {
-        limit:showXProducts 
+        limit:showXProducts
         },
         headers: {
             'X-Parse-Application-Id': 'eS1rNrAJQKbNEfm5AfA3jaY1Xajektnnu27XHT6d',
             'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
             'Content-Type': 'application/json'
         }
-    }).
-    success(function(data, status) {
+    })
+    .then(function(data) {
         var prod = data.results;
         $scope.prod = prod;
         $scope.pageProd = prod;
         // console.log('ile prod: '+prod.length);
         // console.log(prod);
 
-        if (prod.length == showXProducts) {
+        if (prod.length === showXProducts) {
             console.log(prod.length);
             fetchProducts();
         } else {
@@ -117,10 +109,10 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
         // console.log(data+' '+status);
         // console.log(status);
 
-    }).
-    error(function(data, status) {
-        console.log('error');
-        console.log(status);
+    })
+    .catch(function(data, status) {
+        console.log('error fetch2 ', data, status);
+        console.log($scope.prod);
     });
 
 
@@ -146,18 +138,18 @@ angular.module('storeApp').controller('productListCtrl', ['$scope','$http', '$fi
                 'X-Parse-REST-API-Key': '38FBR0WkiWMjMOzOt5gkU7EcXrTwvYHsNWnrx40k',
                 'Content-Type': 'application/json'
             }
-        }).
-        success(function(data, status) {
+        })
+        .then(function() {
             // console.log('success');
             // console.log(status);
 
             // alert('Produkt został usunięty poprawnie!');
             // window.location('/#/list-product');
             // console.log(prod.results[0].productName);
-        }).
-        error(function(data, status) {
-            console.log('error');
-            console.log(status);
+        })
+        .catch(function() {
+            console.log('error for zeroPriceProds');
+            // console.log(status);
         });
     };
     /**
